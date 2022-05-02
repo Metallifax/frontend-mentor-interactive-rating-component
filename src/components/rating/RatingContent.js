@@ -1,24 +1,17 @@
-import Star from '../../images/icon-star.svg';
 import { useContext } from 'react';
-import './RatingContent.css';
 import { ContextContainer } from '../../App';
+import RatingButton from './rating-button/RatingButton';
+import SubmitButton from './submit-button/SubmitButton';
+import starIcon from '../../images/icon-star.svg';
+import './RatingContent.css';
 
 function RatingContent() {
   const { appState, setAppState } = useContext(ContextContainer);
-  const commonRatingButtonClasses =
-    'flex justify-center items-center font-bold rounded-full button-sizing hover:bg-orange hover:text-white active:bg-lightGrey active:text-white';
-  const submitButtonClasses =
-    'bg-orange text-white text-center font-bold text-xs w-full h-9 mt-5 rounded-full leading-10 tracking-widest hover:bg-white hover:text-orange';
-  const ratingButtonUnselectedClasses = `${commonRatingButtonClasses} bg-darkBlue text-lightGrey`;
-  const ratingButtonSelectedClasses = `${commonRatingButtonClasses} bg-lightGrey text-white`;
 
   return (
     <div className='relative top-6 left-6 custom-max-width'>
-      <button
-        className='w-10 h-10 flex justify-center items-center bg-darkBlue
-      rounded-full hover:cursor-default'
-      >
-        <img className='star-sizing' src={Star} alt='A star' />
+      <button className='w-10 h-10 flex justify-center items-center bg-darkBlue rounded-full hover:cursor-default'>
+        <img className='star-sizing' src={starIcon} alt='A star icon' />
       </button>
       <h1 className='text-white font-bold text-xl mt-5'>How did we do?</h1>
       <p className='mt-2 text-lightGrey leading-5 tracking-tighter text-sm'>
@@ -26,43 +19,15 @@ function RatingContent() {
         offering!
       </p>
       <div className='flex flex-row items-center space-x-4 mt-5'>
-        <button
-          className={appState.rating === 1 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
-          onClick={() => setAppState({ rating: 1 })}
-        >
-          1
-        </button>
-        <button
-          className={appState.rating === 2 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
-          onClick={() => setAppState({ rating: 2 })}
-        >
-          2
-        </button>
-        <button
-          className={appState.rating === 3 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
-          onClick={() => setAppState({ rating: 3 })}
-        >
-          3
-        </button>
-        <button
-          className={appState.rating === 4 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
-          onClick={() => setAppState({ rating: 4 })}
-        >
-          4
-        </button>
-        <button
-          className={appState.rating === 5 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
-          onClick={() => setAppState({ rating: 5 })}
-        >
-          5
-        </button>
+        <RatingButton rating={appState.rating} ratingNumber={1} onClick={() => setAppState({ rating: 1 })} />
+        <RatingButton rating={appState.rating} ratingNumber={2} onClick={() => setAppState({ rating: 2 })} />
+        <RatingButton rating={appState.rating} ratingNumber={3} onClick={() => setAppState({ rating: 3 })} />
+        <RatingButton rating={appState.rating} ratingNumber={4} onClick={() => setAppState({ rating: 4 })} />
+        <RatingButton rating={appState.rating} ratingNumber={5} onClick={() => setAppState({ rating: 5 })} />
       </div>
-      <button
-        className={submitButtonClasses}
+      <SubmitButton
         onClick={() => (appState.rating > 0 ? setAppState({ rating: appState.rating, submitted: true }) : null)}
-      >
-        SUBMIT
-      </button>
+      />
     </div>
   );
 }
