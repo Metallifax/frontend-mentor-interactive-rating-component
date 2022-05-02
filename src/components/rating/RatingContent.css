@@ -1,5 +1,14 @@
+.custom-max-width {
+    max-width: 85%;
+}
+
 .button-sizing {
     height: 2.5rem;
     width: 3rem;
     padding-top: 2px;
+}
+
+.star-sizing {
+    width: .85rem;
+    height: .75rem;
 }

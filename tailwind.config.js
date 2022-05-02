@@ -9,12 +9,13 @@ module.exports = {
       mediumGrey: 'hsl(216, 12%, 54%)',
       darkBlue: 'hsl(213, 19%, 18%)',
       veryDarkBlue: 'hsl(216, 12%, 8%)',
+      veryDarkBlueLighter: 'hsl(216, 10%, 13%)',
     },
     fontFamily: {
       sans: ['Overpass', 'sans-serif'],
     },
     extend: {
-      'gradient-radial': 'radial-gradient(var(darkBlue, veryDarkBlue))'
+      'gradient-radial': 'radial-gradient(var(darkBlue, veryDarkBlue))',
     },
   },
   plugins: [],
