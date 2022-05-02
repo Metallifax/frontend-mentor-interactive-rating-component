@@ -1,11 +1,12 @@
 import Star from '../../images/icon-star.svg';
-import { useState } from 'react';
+import { useContext } from 'react';
 import './RatingContent.css';
+import { ContextContainer } from '../../App';
 
 function RatingContent() {
-  const [currentActive, setCurrentActive] = useState(0);
+  const { appState, setAppState } = useContext(ContextContainer);
   const commonRatingButtonClasses =
-    'flex justify-center items-center font-bold rounded-full button-sizing hover:bg-orange hover:text-white active:bg-lightGrey active:text-white transition';
+    'flex justify-center items-center font-bold rounded-full button-sizing hover:bg-orange hover:text-white active:bg-lightGrey active:text-white';
   const submitButtonClasses =
     'bg-orange text-white text-center font-bold text-xs w-full h-9 mt-5 rounded-full leading-10 tracking-widest hover:bg-white hover:text-orange';
   const ratingButtonUnselectedClasses = `${commonRatingButtonClasses} bg-darkBlue text-lightGrey`;
@@ -26,37 +27,42 @@ function RatingContent() {
       </p>
       <div className='flex flex-row items-center space-x-4 mt-5'>
         <button
-          className={currentActive === 1 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
-          onClick={() => setCurrentActive(1)}
+          className={appState.rating === 1 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
+          onClick={() => setAppState({ rating: 1 })}
         >
           1
         </button>
         <button
-          className={currentActive === 2 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
-          onClick={() => setCurrentActive(2)}
+          className={appState.rating === 2 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
+          onClick={() => setAppState({ rating: 2 })}
         >
           2
         </button>
         <button
-          className={currentActive === 3 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
-          onClick={() => setCurrentActive(3)}
+          className={appState.rating === 3 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
+          onClick={() => setAppState({ rating: 3 })}
         >
           3
         </button>
         <button
-          className={currentActive === 4 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
-          onClick={() => setCurrentActive(4)}
+          className={appState.rating === 4 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
+          onClick={() => setAppState({ rating: 4 })}
         >
           4
         </button>
         <button
-          className={currentActive === 5 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
-          onClick={() => setCurrentActive(5)}
+          className={appState.rating === 5 ? ratingButtonSelectedClasses : ratingButtonUnselectedClasses}
+          onClick={() => setAppState({ rating: 5 })}
         >
           5
         </button>
       </div>
-      <button className={submitButtonClasses}>SUBMIT</button>
+      <button
+        className={submitButtonClasses}
+        onClick={() => (appState.rating > 0 ? setAppState({ rating: appState.rating, submitted: true }) : null)}
+      >
+        SUBMIT
+      </button>
     </div>
   );
 }
