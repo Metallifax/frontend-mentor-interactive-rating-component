@@ -1,0 +1,15 @@
+:root {
+    --orange: hsl(25, 97%, 53%);
+    --black: hsl(0, 0%, 6%);
+    --white: hsl(0, 0%, 100%);
+    --lightGrey: hsl(217, 12%, 63%);
+    --mediumGrey: hsl(216, 12%, 54%);
+    --darkBlue: hsl(213, 19%, 18%);
+    --veryDarkBlue: hsl(216, 12%, 12%);
+}
+
+
+
+.my-background {
+    background: radial-gradient(circle at top, var(--darkBlue) 20%, var(--veryDarkBlue));
+}
